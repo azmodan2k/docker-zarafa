@@ -1,5 +1,6 @@
-FROM leckerbeef/zarafabase:latest7.1
-MAINTAINER Tobias Mandjik <webmaster@leckerbeef.de>
+FROM azmodan2k/zarafabase:latest
+MAINTAINER azmodan2k "work@azmodan.com"
+# ORIGINAL MAINTAINER Tobias Mandjik <webmaster@leckerbeef.de>
 
 # noninteractive Installation (dont't touch this)
 ENV DEBIAN_FRONTEND noninteractive
