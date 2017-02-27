@@ -256,32 +256,30 @@
     # ~~~~~~~~~~~~~~
 
     echo "[APACHE] ENABLING SITES AND 'mod_rewrite'"
-    mv /etc/apache2/sites-available/zarafa-webaccess /etc/apache2/sites-available/zarafa-webaccess.conf
+    #mv /etc/apache2/sites-available/zarafa-webaccess /etc/apache2/sites-available/zarafa-webaccess.conf
     #mv /etc/apache2/sites-available/zarafa-webapp /etc/apache2/sites-available/zarafa-webapp.conf
     #cp /etc/phpldapadmin/apache.conf /etc/apache2/sites-available/phpldapadmin.conf
 
-    # Enabling PhpLDAPadmin, Zarafa Webaccess/Webapp and Z-Push
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    a2ensite zarafa-webaccess
-    #a2ensite zarafa-webapp
-    a2ensite phpldapadmin
-    a2ensite z-push
-
-    a2enmod rewrite
-
-    # Enable SSL-Support
+	# Enable SSL-Support
     # ~~~~~~~~~~~~~~~~~~
-
     echo "[APACHE] Enabling SSL-Suport"
     a2enmod ssl
     a2ensite default-ssl.conf
 
+	
+    # Enabling PhpLDAPadmin, Zarafa Webaccess/Webapp and Z-Push
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	a2enmod rewrite
+	
+    a2ensite zarafa-webapp
+	a2ensite z-push
+    a2ensite phpldapadmin
+        
     # Make index.html empty and put Zarafaclient
     # into /var/www
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    echo > /var/www/html/index.html
+    echo "" > /var/www/html/index.html
     #mv /root/windows/zarafaclient* /var/www/html/zarafaclient.msi
 
 ################
@@ -314,7 +312,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     echo "[Clamav] Refreshing Clamav database (be patient ...)"
-    freshclam --stdout
+    #freshclam --stdout
 
 ############
 # FINISHED #
