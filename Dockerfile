@@ -47,7 +47,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -q update && apt-get -yqq install \
 rsyslog curl ssh fetchmail postfix postfix-ldap amavisd-new clamav-daemon \
 spamassassin razor pyzor slapd ldap-utils phpldapadmin php5-cli php-soap \
 arj bzip2 cabextract cpio file gzip lhasa nomarch pax unrar-free ripole unzip \
-zip zoo rpm2cpio lzop xzdec lzma
+zip zoo rpm2cpio lzop xzdec lzma \
+sasl2-bin \
 
 # Add configuration files
 ADD /config/amavis/15-content_filter_mode /etc/amavis/conf.d/15-content_filter_mode
@@ -56,6 +57,9 @@ ADD /config/postfix/ldap-aliases.cf /etc/postfix/ldap-aliases.cf
 ADD /config/postfix/ldap-users.cf /etc/postfix/ldap-users.cf
 ADD /config/postfix/main.cf /etc/postfix/main.cf
 ADD /config/postfix/master.cf /etc/postfix/master.cf
+ADD /config/postfix/sasl/smtpd.conf /etc/postfix/sasl/smtpd.conf
+ADD /config/saslauthd/default/saslauthd /etc/default/saslauthd
+ADD /config/saslauthd/saslauthd.conf /etc/saslauthd.conf
 ADD /config/ldap/ldap.ldif /usr/local/bin/ldap.ldif
 ADD /config/ldap/fetchmail.ldif /etc/ldap/schema/fetchmail.ldif
 ADD /config/ldap/fetchmail.schema /etc/ldap/schema/fetchmail.schema

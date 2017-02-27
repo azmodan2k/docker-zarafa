@@ -1,7 +1,8 @@
 # Initialization and Setup for a new
 # created Docker Container
 #
-# Author: Tobias Mandjik <webmaster@leckerbeef.de>
+# Modified by: azmodan2k <work@azmodan.com>
+# Original Author: Tobias Mandjik <webmaster@leckerbeef.de>
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ########
@@ -114,6 +115,13 @@
     echo "[SPAMASSASSIN] Enabling Spamassassin and daily Cronjob"
     sed -i -e 's/^ENABLED=0/ENABLED=1/g' -e 's/^CRON=0/CRON=1/g' /etc/default/spamassassin
 
+############
+# SASLAUTH #
+############
+
+	echo "[SASLAUTH] EDIT SASLAUTH CONNECTION FILE"
+    sed -i -e 's/dc=REPLACE,dc=ME/'${LB_LDAP_DN}'/g' /etc/saslauthd.conf
+	
 ###########
 # POSTFIX #
 ###########
